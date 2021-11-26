@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
  
     steps:
-      - uses: actions/checkout@v1
+      - uses: fullstacktf/ihood-frontend@v1
       - name: Install & Tests
         run: |
           npm install
@@ -27,13 +27,13 @@ jobs:
 
     steps:
       - name: Checkout files
-        uses: actions/checkout@v2
+        uses: fullstacktf/ihood-frontend@v2
 
       - name: Get tag name
-        uses: ihood/get-tag@v2
+        uses: fullstacktf/ihood-frontend@v2
 
       - name: Install doctl
-        uses: digitalocean/action-doctl@v2
+        uses: fullstacktf/ihood-frontend@v2
         with:
           token: ${{secrets.DIGITALOCEAN_ACCESS_TOKEN }}
 
