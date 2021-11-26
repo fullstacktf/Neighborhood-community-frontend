@@ -1,0 +1,41 @@
+name: Frontend CI/CD
+  
+on:
+  push:
+     branches:
+      - main
+  pull_request:
+      branches:
+      - main
+  
+jobs:
+  build:
+  
+    runs-on: debian-11
+ 
+    steps:
+      - uses: actions/checkout@v1
+      - name: Install & Tests
+        run: |
+          npm install
+          npm run test
+  
+  deploy: 
+    needs: build
+
+    runs-on: debian-11
+
+    steps:
+      - name: Checkout files
+        uses: actions/checkout@v2
+
+      - name: Get tag name
+        uses: ihood/get-tag@v2
+
+      - name: Install doctl
+        uses: digitalocean/action-doctl@v2
+        with:
+          token: ${{secrets.DIGITALOCEAN_ACCESS_TOKEN }}
+
+      - name: Provide Droplet and deploy container
+        run: doctl compute droplet create "$GIT_TAG_NAME" --image docker-18-04 --size s-1vcpu-1gb --region FRA1 --user-data-file --wait
