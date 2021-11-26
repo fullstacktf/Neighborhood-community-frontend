@@ -41,6 +41,7 @@ jobs:
       - name: Install doctl
         uses: actions/checkout@v2
         with:
+          submodules: recursive
           token: ${{secrets.DIGITALOCEAN_ACCESS_TOKEN }}
 
       - name: Provide Droplet and deploy container
