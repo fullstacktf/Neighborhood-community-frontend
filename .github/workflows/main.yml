@@ -33,13 +33,13 @@ jobs:
 
     steps:
       - name: Checkout files
-        uses: actions/ihoodfront@v1
+        uses: actions/checkout@v1
 
       - name: Get tag name
-        uses: actions/ihoodfront@v2
+        uses: actions/checkout@v2
 
       - name: Install doctl
-        uses: actions/ihoodfront@v2
+        uses: actions/checkout@v2
         with:
           token: ${{secrets.DIGITALOCEAN_ACCESS_TOKEN }}
 
