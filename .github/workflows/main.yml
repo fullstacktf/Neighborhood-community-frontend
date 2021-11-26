@@ -1,4 +1,4 @@
-name: Node.js CI
+name: ihoodfront
 
 on:
   push:
@@ -33,13 +33,13 @@ jobs:
 
     steps:
       - name: Checkout files
-        uses: actions/ihood-frontend@v2
+        uses: actions/ihoodfront@v1
 
       - name: Get tag name
-        uses: actions/ihood-frontend@v2
+        uses: actions/ihoodfront@v2
 
       - name: Install doctl
-        uses: actions/ihood-frontend@v2
+        uses: actions/ihoodfront@v2
         with:
           token: ${{secrets.DIGITALOCEAN_ACCESS_TOKEN }}
 
